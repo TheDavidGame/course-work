@@ -1,0 +1,55 @@
+h1 {
+    margin-top: 12rem;
+    margin-left: 3rem;
+    font-family: Circe, sans-serif;
+    font-size: 5rem;
+}
+
+.all span {
+    margin-left: 3rem;
+    font-family: Circe,sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin-bottom: 2rem;
+    margin-left: 3rem;
+}
+
+th, td {
+    font-family: Circe, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1D3557;
+    border-bottom: 2px solid #e63946;
+    border-top: 2px solid #e63946;
+    border-left: none;
+    border-right: none;
+    padding: 15px;
+}
+
+.one {
+    width: 20%;
+}
+
+.two {
+    width: 40%;
+}
+
+.three {
+    width: 20%;
+}
+.btn-back {
+    text-decoration: none;
+}
+.btn-back span {
+    font: 1.8rem Circe;
+    padding: 0.5rem;
+    color: #F1FAEE;
+    background-color: #e63946;
+    border: 2px solid #1D3557;
+    border-radius: 0.5rem;
+    transition: 1s;
+}

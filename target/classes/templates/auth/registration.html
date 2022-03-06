@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="UTF-8">
+  <title>Авторизация</title>
+  <link rel="shortcut icon" href="../image/desktop.png" type="image/png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="js/click.js"></script>
+</head>
+<body>
+<div class="header">
+  <!--главная надпись-->
+  <div class="header-text">
+    <a href="/">Itmall</a>
+  </div>
+  <!--меню-->
+  <div class="menu">
+    <div class="row">
+      <a sec:authorize="isAnonymous()" href="/authorization"><img src="image/user.png"></a>
+      <a id="lout" sec:authorize="isAuthenticated()" href="/logout"><img src="image/logout.png"></a>
+      <a href="profile/cart-product"><img src="image/cart.png"></a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Категории</button>
+    <div id="myDropdown" class="dropdown-content">
+      <div class="types">
+        <a href="category/Телефоны">Телефоны</a>
+        <a href="category/Планшеты">Планшеты</a>
+        <a href="category/Ноутбуки">Ноутбуки</a>
+        <a href="category/Компьютеры">Компьютеры</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form">
+  <ul class="tab-group">
+    <li class="tab active"><a href="#signup">Регистрация</a></li>
+    <li class="tab"><a href="#login">Вход</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="signup">
+      <form th:action="@{/authorization}" th:method="post" th:object="${user}">
+        <div class="top-row">
+          <div class="field-wrap">
+            <label>
+              Имя<span class="req">*</span>
+            </label>
+            <input type="text" th:field="*{firstName}" required autocomplete="off" />
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Фамилия<span class="req">*</span>
+            </label>
+            <input type="text" th:field="*{lastName}"required autocomplete="off"/>
+          </div>
+        </div>
+
+        <div class="field-wrap">
+          <label>
+            Email<span class="req" >*</span>
+          </label>
+          <input type="email" th:field="*{username}" name="username" required autocomplete="off"/>
+        </div>
+
+        <div class="field-wrap">
+          <label>
+            Пароль<span class="req">*</span>
+          </label>
+          <input type="password" th:field="*{password}" name="password" required autocomplete="off"/>
+        </div>
+
+        <button type="submit" class="button button-block">Зарегистрироваться</button>
+      </form>
+    </div>
+
+    <div id="login">
+      <form th:action="@{/login}" method="post">
+
+        <div class="field-wrap">
+          <label>
+            Email<span class="req">*</span>
+          </label>
+          <input type="email" name="username" required autocomplete="off"/>
+        </div>
+
+        <div class="field-wrap">
+          <label>
+            Password<span class="req">*</span>
+          </label>
+          <input type="password" name="password" required autocomplete="off"/>
+        </div>
+        <button class="button button-block">Войти</button>
+      </form>
+    </div>
+  </div><!-- tab-content -->
+</div> <!-- /form -->
+<div class="footer">
+  <img src="image/vk-social-logotype.png" alt="vk">
+  <img src="image/instagram.png" alt="instagramm">
+  <img src="image/facebook.png" alt="facebook"> <br>
+</div>
+<script src="../js/index.js"></script>
+</body>
+</html>

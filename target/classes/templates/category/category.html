@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Главная</title>
+    <link rel="shortcut icon" href="../image/desktop.png" type="image/png">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <script src="../js/click.js"></script>
+</head>
+<body>
+<!--шапка страницы-->
+<div class="header">
+    <!--главная надпись-->
+    <div class="header-text">
+        <a href="/">Itmall</a>
+    </div>
+    <!--меню-->
+    <div class="menu">
+        <div class="row">
+            <a sec:authorize="isAnonymous()" href="/authorization"><img src="../image/user.png"></a>
+            <a id="lout" sec:authorize="isAuthenticated()" href="/logout"><img src="../image/logout.png"></a>
+            <a href="../profile/cart-product"><img src="../image/cart.png"></a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Категории</button>
+        <div id="myDropdown" class="dropdown-content">
+            <div class="types">
+                <a href="../category/Телефоны">Телефоны</a>
+                <a href="../category/Планшеты">Планшеты</a>
+                <a href="../category/Ноутбуки">Ноутбуки</a>
+                <a href="../category/Компьютеры">Компьютеры</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="content">
+        <div class="types">
+            <h2 th:text="${type.name}"></h2>
+            <div class="carts-type" >
+                <a th:each="product : ${products}" th:href="'../' + ${product.id}">
+                    <div class="cart">
+                        <div class="img-cart"><img th:src="@{'/image/'} + ${product.image}"></div>
+                        <p class="name" th:text="${product.name}"></p>
+                        <p class="price" th:text="${product.price} + ' руб'"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <img src="../image/vk-social-logotype.png" alt="vk">
+        <img src="../image/instagram.png" alt="instagramm">
+        <img src="../image/facebook.png" alt="facebook"> <br>
+    </div>
+</div>
+</body>
+</html>

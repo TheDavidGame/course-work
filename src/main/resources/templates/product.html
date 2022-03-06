@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${product.name}"></title>
+    <link rel="shortcut icon" href="image/desktop.png" type="image/png">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/product.css">
+    <script src="js/click.js"></script>
+</head>
+<body>
+<!--шапка страницы-->
+<div class="header">
+    <!--главная надпись-->
+    <div class="header-text">
+        <a href="../">Itmall</a>
+    </div>
+    <!--меню-->
+    <div class="menu">
+        <div class="row">
+            <a sec:authorize="isAnonymous()" href="/authorization"><img src="image/user.png"></a>
+            <a id="lout" sec:authorize="isAuthenticated()" href="/logout"><img src="image/logout.png"></a>
+            <a href="profile/cart-product"><img src="image/cart.png"></a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Категории</button>
+        <div id="myDropdown" class="dropdown-content">
+            <div class="types">
+                <a href="category/Телефоны">Телефоны</a>
+                <a href="category/Планшеты">Планшеты</a>
+                <a href="category/Ноутбуки">Ноутбуки</a>
+                <a href="category/Компьютеры">Компьютеры</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="content">
+        <h2 th:text="${product.name}"></h2>
+        <div class="info">
+            <div class="one">
+                <img class="img-head" th:src="@{'/image/' + ${product.image}}">
+            </div>
+            <div class="two">
+                <p class="label">Характеристики</p>
+                <li><span class="title">Диагональ</span><span class="head" th:text="${product.diagonal}"></span></li>
+                <li><span class="title">Процессор</span><span class="head" th:text="${product.CPU}"></span></li>
+                <li><span class="title">Оперативная память</span><span class="head" th:text="${product.RAM}"></span></li>
+                <li><span class="title">Вес</span><span class="head" th:text="${product.weight}"></span></li>
+                <li><span class="title">Операционная система</span><span class="head" th:text="${product.system}"></span></li>
+            </div>
+            <div class="three">
+                <p class="label">Описание</p>
+                <span class="info-label" th:text="${product.description}"></span>
+                <p class="margin label">Цена</p>
+                <span class="info-label" id="bold" th:text="${product.price} + ' руб'"></span>
+            </div>
+        </div>
+        <div class="btn-back"><a th:href="'addToCart/' + ${product.id}"><span>Добавить в корзину</span></a></div>
+    </div>
+    <div class="footer">
+        <img src="image/vk-social-logotype.png" alt="vk">
+        <img src="image/instagram.png" alt="instagram">
+        <img src="image/facebook.png" alt="facebook"> <br>
+    </div>
+</div>
+</body>
+</html>

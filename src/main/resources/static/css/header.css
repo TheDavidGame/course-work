@@ -1,0 +1,137 @@
+/*НАСТРОЙКА ШАПКИ СТРАНИЦЫ И ФОНА*/
+
+/*шрифты*/
+@font-face {
+    font-family: Circe;
+    src: url(../fonts/CirceRegular.ttf);
+}
+
+/*базовые настройки*/
+* { outline: 0; padding: 0; margin: 0; border: 0; }
+html {font-size: 10px;}
+body {box-sizing: border-box;}
+
+
+/*ГЛАВНАЯ СТИЛИЗАЦИЯ*/
+
+/*шапка страницы*/
+.header {
+    /*установка фиксированной позиции*/
+    position: fixed;
+    top: 0;
+    height: 8rem;
+    width: 100%;
+    background: rgba(29, 53, 87, 0.8);
+    /*применение flex для расположения блоков*/
+    display: flex;
+    justify-content: start;
+}
+
+/*расположение элементов по вертикали*/
+.header-text a, .row, .img-list {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+form {
+    display: inline;
+}
+
+/*стилизация ссылок шапки*/
+.header-text a, .row a, .list a {
+    text-decoration: none;
+}
+
+.row a img {
+    margin: 0 2rem;
+    width: 5rem;
+    height: 5rem;
+}
+
+/*главная подпись*/
+.header-text {
+    flex: 3 30rem;
+
+}
+
+/*стилизация ссылки главной надписи*/
+.header-text a {
+    display: block;
+    padding: 0 4rem;
+    font-size: 5rem;
+    color: #e63946;
+    letter-spacing: 3px;
+    font-family: Arial, sans-serif;
+    width: 15rem;
+}
+
+/*меню*/
+.menu {
+    flex: 1 20rem;
+}
+
+.row {
+    text-align: center;
+}
+
+
+/*футер*/
+.footer {
+    background-color: #1D3557;
+    height: 8rem;
+    text-align: center;
+}
+
+.footer img {
+    margin: 1rem;
+    height: 5rem;
+    width: 5rem;
+}
+
+.footer span {
+    font-family: Circe, sans-serif;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.dropbtn {
+    background-color: #E63946;
+    color: #F1FAEE;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #457B9D;
+}
+
+.dropdown {
+    flex: 1;
+    display: inline-block;
+    margin: auto 6rem auto 2rem;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #F1FAEE;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #1D3557;
+    padding: 12px 16px;
+    font-family: Circe, sans-serif;
+    text-decoration: none;
+    display: block;
+    font-size: 1.5rem;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}

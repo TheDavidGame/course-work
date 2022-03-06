@@ -1,0 +1,63 @@
+/*КОНТЕНТ*/
+.wrapper {
+    margin-top: 10rem;
+}
+
+.content {
+    padding: 0 10%;
+    min-height: calc(100vh - 10rem);
+}
+
+.content a {
+    text-decoration: none;
+}
+/*заголовки*/
+h2 {
+    text-align: center;
+    padding: 1rem 0;
+    font: 2.5rem Circe;
+    font-weight: bold;
+    color: #1D3557;
+}
+
+/*карточки меню*/
+.carts-type {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.cart {
+    border: 3px solid #E63946;
+    margin-bottom: 4em;
+}
+
+.img-cart img {
+    height: 25rem;
+    width: 25rem;
+    margin: 1rem 3rem;
+    object-fit: cover;
+}
+
+/*подписи внизу*/
+.cart p, .cart a {
+    margin: 1.2rem 0.8rem;
+    vertical-align: middle;
+}
+
+.cart p {
+    font: 1.8rem Circe;
+    color: #1D3557;
+    margin-left: 3rem;
+}
+
+.cart .name {
+    width: 25rem;
+}
+
+.cart .price {
+    font-weight: bold;
+}
+
+

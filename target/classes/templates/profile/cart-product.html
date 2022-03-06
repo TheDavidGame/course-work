@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Корзина</title>
+  <link rel="shortcut icon" href="../image/desktop.png" type="image/png">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/cart.css">
+  <script src="../js/click.js"></script>
+</head>
+<body>
+<div class="header">
+  <!--главная надпись-->
+  <div class="header-text">
+    <a href="/">Itmall</a>
+  </div>
+  <!--меню-->
+  <div class="menu">
+    <div class="row">
+      <a sec:authorize="isAnonymous()" href="/login"><img src="../image/user.png"></a>
+      <a id="lout" sec:authorize="isAuthenticated()" href="/logout"><img src="../image/logout.png"></a>
+      <a href=""><img src="../image/cart.png"></a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Категории</button>
+    <div id="myDropdown" class="dropdown-content">
+      <div class="types">
+        <a href="../category/Телефоны">Телефоны</a>
+        <a href="../category/Планшеты">Планшеты</a>
+        <a href="../category/Ноутбуки">Ноутбуки</a>
+        <a href="../category/Компьютеры">Компьютеры</a>
+      </div>
+    </div>
+  </div>
+</div>
+<h1  class="cart">Корзина</h1>
+<div class="container">
+  <table th:each="product : ${user.productList}">
+    <tr><td class="one">Product image</td><td class="two">Product</td><td class="three">Price</td><td class="four"></td></tr>
+    <tr><td class="one"><img th:src="@{'/image/' + ${product.image}}" height="100"></td>
+      <td class="two" th:text="${product.name}"></td>
+      <td class="three" th:text="${product.price} + ' руб'"></td>
+      <td><a class="btn-back" th:href="'../removeToCart/' + ${product.id}"><span>Удалить</span></a></td></tr>
+  </table>
+</div>
+<div class="all">
+  <span class="a" th:text="'Всего:  '+ ${total} + '  руб'"></span>
+  <input style="margin-left: 2rem" type="submit" class="btn" value="Перейти к оплате">
+</div>
+</body>
+</html>

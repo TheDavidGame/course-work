@@ -1,0 +1,84 @@
+.wrapper {
+    margin-top: 8rem;
+}
+
+.content {
+    padding: 0 10%;
+    min-height: calc(100vh - 10rem);
+}
+
+.content * {
+    font-family: Circe, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #1D3557;
+}
+.img-head {
+    height: 30rem;
+    width: 30rem;
+    object-fit: cover;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.one, .two, .three {
+    width: 28%;
+}
+
+
+.label {
+    font-size: 2rem;
+    color: #1D3557;
+    border-bottom: 3px solid #e63946;
+    margin-bottom: 1rem;
+}
+
+.two li {
+    padding: 0.5rem 0;
+    font-size: 2rem;
+    list-style: none;
+    border-bottom: 1px solid grey;
+}
+
+.two li .head {
+    margin-left: 2rem;
+}
+
+.margin {
+    margin-top: 2rem;
+}
+
+.info-label {
+    font-size: 2rem;
+    color: #1D3557;
+}
+
+#bold {
+    font-weight: bold;
+}
+
+.btn-back {
+    margin: 4rem 0;
+    text-align: end;
+}
+
+.btn-back a {
+    text-decoration: none;
+    font: 3rem Circe;
+    padding: 0.5rem;
+    color: #F1FAEE;
+    background-color: #e63946;
+    border: 2px solid #1D3557;
+    border-radius: 0.5rem;
+    transition: 1s;
+}
+

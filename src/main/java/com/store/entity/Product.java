@@ -1,5 +1,7 @@
 package com.store.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,9 +49,8 @@ public class Product {
     @JoinColumn(name = "product_type_id")
     private ProductType productType;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "productList", fetch = FetchType.EAGER)
     private List<User> userList;
 
-    public Product() {
-    }
 }

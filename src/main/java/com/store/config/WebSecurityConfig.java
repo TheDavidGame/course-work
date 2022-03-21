@@ -10,8 +10,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.sql.DataSource;
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -36,9 +40,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors().configurationSource(corsConfigurationSource()).and()
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/{id}", "auth/registration", "/image/**", "/css/**", "/fonts/**").permitAll()
                 .antMatchers("/addToCart/{id}", "/profile/**").authenticated()
+                .antMatchers("/api/cart/**").authenticated()
+                .antMatchers("/api/**").permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -49,6 +57,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/authorization");
+    }
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.setAllowedOriginPatterns(Collections.singletonList("*"));
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+        return source;
     }
 
     @Bean

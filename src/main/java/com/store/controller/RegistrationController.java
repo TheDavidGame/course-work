@@ -41,10 +41,7 @@ public class RegistrationController {
             return "auth/registration";
         }
 
-        user.setActive(true);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles(Collections.singleton(Role.USER));
-        userService.save(user);
+        userService.createUser(user);
 
         return "redirect:/authorization";
     }

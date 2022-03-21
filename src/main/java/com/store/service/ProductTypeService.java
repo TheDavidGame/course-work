@@ -10,18 +10,18 @@ import java.util.List;
 @Service
 public class ProductTypeService {
 
-    private ProductTypeRepository productTypeRepository;
+    private final ProductTypeRepository productTypeRepository;
 
     @Autowired
     public ProductTypeService(ProductTypeRepository productTypeRepository) {
         this.productTypeRepository = productTypeRepository;
     }
 
-    public Iterable<ProductType> getAll() {
+    public List<ProductType> getAll() {
         return productTypeRepository.findAll();
     }
 
-    public List<ProductType> getType() {
-        return (List<ProductType>) productTypeRepository.findAll();
+    public ProductType getById(Long id) {
+        return productTypeRepository.findById(id).orElseThrow();
     }
 }

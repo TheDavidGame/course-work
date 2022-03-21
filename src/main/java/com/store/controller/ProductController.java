@@ -18,12 +18,8 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public String getProduct(@PathVariable("id") Long id, Model model) {
-        Optional<Product> productOpt = productService.getById(id);
-        if(productOpt.isPresent()) {
-            Product product = productOpt.get();
-            model.addAttribute("product", product);
-            return "product";
-        }
-        return "redirect:/";
+        Product product = productService.getById(id);
+        model.addAttribute("product", product);
+        return "product";
     }
 }

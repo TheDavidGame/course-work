@@ -45,7 +45,7 @@ public class CartController {
     public String addToCart(@PathVariable("id")Long productId, Principal principal) {
         ModelAndView mv = new ModelAndView("profile/cart-product");
         User user = userService.getUser(principal.getName());
-        Product product = productService.getById(productId).get();
+        Product product = productService.getById(productId);
 
         List<Product> productList = user.getProductList();
         productList.add(product);
@@ -70,7 +70,7 @@ public class CartController {
     public ModelAndView removeToCart(@PathVariable("id")Long productId, Principal principal) {
         ModelAndView mv = new ModelAndView("profile/cart-product");
         User user = userService.getUser(principal.getName());
-        Product product = productService.getById(productId).get();
+        Product product = productService.getById(productId);
 
         List<Product> productList = user.getProductList();
         for (Product prod : productList) {

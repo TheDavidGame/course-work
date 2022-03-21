@@ -38,7 +38,7 @@ public class DefaultController {
 
     @GetMapping("category/{category}")
     public String category(Model model, @PathVariable("category") String category) {
-        List<ProductType> types = productTypeService.getType();
+        List<ProductType> types = productTypeService.getAll();
         for (ProductType type : types) {
             if (type.getName().equals(category)) {
                 model.addAttribute("type", type);

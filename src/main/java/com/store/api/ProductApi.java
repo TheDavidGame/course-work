@@ -15,7 +15,7 @@ public class ProductApi {
 
     private final ProductService productService;
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Product getById(@PathVariable Long id) {
         return productService.getById(id);
     }

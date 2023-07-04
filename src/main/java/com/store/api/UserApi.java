@@ -38,23 +38,23 @@ public class UserApi {
         return userService.createUser(user);
     }
 
-    @GetMapping("cart")
+    @GetMapping("/cart")
     public List<Product> getUserCart() {
         return userService.getUserCurrentUser().getProductList();
     }
 
-    @PutMapping("cart/{id}")
+    @PutMapping("/cart/{id}")
     public void addItemToCart(@PathVariable Long id) {
         userService.addProductToCart(id);
     }
 
-    @DeleteMapping("cart/{id}")
+    @DeleteMapping("/cart/{id}")
     public void removeItemFromCart(@PathVariable Long id) {
         userService.removeProductFromCart(id);
     }
 
     @ExceptionHandler(SessionAuthenticationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public void handleException() {}
 
 }

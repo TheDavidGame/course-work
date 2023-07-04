@@ -51,9 +51,14 @@ public class UserService {
 
     public void removeProductFromCart(Long productId) {
         User currentUser = getUserCurrentUser();
-        currentUser.getProductList().stream().filter(p -> p.getId().equals(productId)).findFirst().ifPresent(p -> {
-            currentUser.getProductList().remove(p);
-            save(currentUser);
+        currentUser.getProductList().stream()
+                .filter(p -> p.getId()
+                        .equals(productId))
+                .findFirst()
+                .ifPresent(p -> {
+                        currentUser.getProductList()
+                                .remove(p);
+                        save(currentUser);
         });
     }
 

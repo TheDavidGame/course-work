@@ -26,7 +26,7 @@ public class ProductTypeApi {
         return productTypeService.getAll();
     }
 
-    @GetMapping("{id}/products")
+    @GetMapping("/{id}/products")
     public ProductTypeProductsDto getProductsByType(@PathVariable Long id) {
         return ProductTypeProductsDto.builder()
                 .name(productTypeService.getById(id).getName())
@@ -34,7 +34,7 @@ public class ProductTypeApi {
                 .build();
     }
 
-    @GetMapping("products")
+    @GetMapping("/products")
     public List<ProductTypeProductsDto> getAllProducts() {
         return productService.getAllByProductType()
                 .entrySet()
